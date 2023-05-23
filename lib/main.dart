@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'song.dart';
+import 'package:music_app/song.dart';
+import 'playlist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   AudioPlayer audioPlayer = AudioPlayer();
+  SongList songList = SongList();
   bool con = true;
   int audioNo = 0;
   
@@ -123,14 +125,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   elevation: 3.0,
                   isFrostedGlass: true,
                   shadowColor: const Color.fromARGB(255, 50, 131, 236).withOpacity(0.20),
-                  child: Image(image: AssetImage(musicAllIssue[audioNo]['musicImage'])),
+                  // child: Image(image: AssetImage(musicAllIssue[audioNo]['musicImage'])),
+                  child: Image(image: AssetImage(songList.allSong[audioNo].song_img!)),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: Text(musicAllIssue[audioNo]['musicName'], style: TextStyle(fontSize: 20, color: Colors.greenAccent),),
+                child: Text(songList.allSong[audioNo].song_name, style: TextStyle(fontSize: 20, color: Colors.greenAccent),),
               ),
-              Text(musicAllIssue[audioNo]['artist'], style: TextStyle(fontSize: 15, color: Colors.greenAccent),),
+              Text(songList.allSong[audioNo].artist, style: TextStyle(fontSize: 15, color: Colors.greenAccent),),
               Padding(
                 padding: const EdgeInsets.only(top: 40, bottom: 100),
                 child: Row(
