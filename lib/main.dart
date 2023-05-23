@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
   
   // FOR AUDIO PLAY, PAUSE, SKIP AND BACK
   play() async {
-    await audioPlayer.play(musicAllIssue[audioNo]['musicLink']);
+    await audioPlayer.play(songList.allSong[audioNo].song_url);
   }
   pause() async {
     await audioPlayer.pause();
