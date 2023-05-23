@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'song.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,22 +36,36 @@ class _MyHomePageState extends State<MyHomePage> {
   int audioNo = 0;
   
   // AUDIO
-  List image = [
-    'img1.jpg',
-    'img2.jpg',
-    'img3.jpg',
-    'img4.jpg',
+  List musicAllIssue = [
+    {
+      'musicName': 'မမြင့်',
+      'musicImage': 'images/img1.jpg',
+      'musicLink': 'https://webtestingforme.000webhostapp.com/Mp3/audio1.mp3',
+      'artist': 'ပုံရိပ်',
+    },
+    {
+      'musicName': 'Machine',
+      'musicImage': 'images/img2.jpg',
+      'musicLink': 'https://webtestingforme.000webhostapp.com/Mp3/audio2.mp3',
+      'artist': 'Imagine Dragon',
+    },
+    {
+      'musicName': 'Trust Me',
+      'musicImage': 'images/img3.jpg',
+      'musicLink': 'https://webtestingforme.000webhostapp.com/Mp3/audio3.mp3',
+      'artist': 'Imagine Dragon',
+    },
+    {
+      'musicName': 'စာမျက် ၁၅',
+      'musicImage': 'images/img4.jpg',
+      'musicLink': 'https://webtestingforme.000webhostapp.com/Mp3/audio4.mp3',
+      'artist': 'လေးဖြူ',
+    },
   ];
-  List music = [
-    'https://webtestingforme.000webhostapp.com/Mp3/audio1.mp3',
-    'https://webtestingforme.000webhostapp.com/Mp3/audio2.mp3',
-    'https://webtestingforme.000webhostapp.com/Mp3/audio3.mp3',
-    'https://webtestingforme.000webhostapp.com/Mp3/audio4.mp3',
-    ];
-
+  
   // FOR AUDIO PLAY, PAUSE, SKIP AND BACK
   play() async {
-    await audioPlayer.play(music[audioNo]);
+    await audioPlayer.play(musicAllIssue[audioNo]['musicLink']);
   }
   pause() async {
     await audioPlayer.pause();
@@ -108,11 +123,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   elevation: 3.0,
                   isFrostedGlass: true,
                   shadowColor: const Color.fromARGB(255, 50, 131, 236).withOpacity(0.20),
-                  child: Image(image: AssetImage('images/${image[audioNo]}')),
+                  child: Image(image: AssetImage(musicAllIssue[audioNo]['musicImage'])),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 100),
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Text(musicAllIssue[audioNo]['musicName'], style: TextStyle(fontSize: 20, color: Colors.greenAccent),),
+              ),
+              Text(musicAllIssue[audioNo]['artist'], style: TextStyle(fontSize: 15, color: Colors.greenAccent),),
+              Padding(
+                padding: const EdgeInsets.only(top: 40, bottom: 100),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
